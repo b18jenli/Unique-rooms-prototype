@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="webproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="validering.js"></script>
+    <script type="text/javascript" src="slideshow.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+
+    <title>Unique Rooms</title>
+
+    <script type="text/javascript">
+
+    window.logged="";
+
+      $(document).ready(function() {
+			     $(document).on('submit', 'form', function() {
+				        return false;
+               });
+
+               showpage('page1');
+
+               $(function() {
+                 $( "#checkin" ).datepicker({dateFormat: 'yy-mm-dd'});
+               });
+
+               $(function() {
+                 $( "#checkout" ).datepicker({dateFormat: 'yy-mm-dd'});
+               });
+      });
+
+
+      function showpage(pageid)
+      {
+        $(".page").css("display","none");
+        $("#"+pageid).css("display","block");
+        $("#menu").css("display","block");
+          if(pageid=='page1'|| pageid=='page3'){
+
+              $("#menu").css("display","none");
+          }
+      }
+
+
+      var ctx;
+      var color= 'white';
+      //--==## Line ##==--
+      function Line(){
+        ctx.strokeStyle="black";
+        ctx.lineWidth=5;
+        ctx.fillStyle='#000';
+        ctx.beginPath();
+        ctx.moveTo(15,43);
+        ctx.lineTo(1080,46);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      //--==## Flag ##==--
+      function Flag(xk,yk){
+
+        var gradient1=ctx.createLinearGradient(0,0,0,130);
+          gradient1.addColorStop(0,"#c79400");
+          gradient1.addColorStop(0.5,"#ffc400");
+          gradient1.addColorStop(1,"#fff64f");
+          ctx.fillStyle=gradient1;
+
+        ctx.globalAlpha=1.0;
+        ctx.save();
+        ctx.translate(xk,yk);
+
+        ctx.beginPath();
+        ctx.moveTo(136,44);
+        ctx.lineTo(188,133);
+        ctx.lineTo(239,43);
+        ctx.lineTo(136,44);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function Ball(xk,yk,col){
+        ctx.save();
+        ctx.translate(xk,yk);
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.moveTo(411,61);
+        ctx.lineTo(411,51);
+        ctx.bezierCurveTo(411,47,409,44,406,44);
+        ctx.lineTo(406,44);
+        ctx.bezierCurveTo(403,44,400,47,400,51);
+        ctx.lineTo(400,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        ctx.moveTo(405,61);
+        ctx.bezierCurveTo(384,61,367,78,367,99);
+        ctx.bezierCurveTo(367,120,384,137,405,137);
+        ctx.bezierCurveTo(426,137,443,120,443,99);
+        ctx.bezierCurveTo(443,78,426,61,405,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        ctx.moveTo(405,61);
+        ctx.bezierCurveTo(387,61,373,78,373,99);
+        ctx.bezierCurveTo(373,120,387,137,405,137);
+        ctx.bezierCurveTo(423,137,437,120,437,99);
+        ctx.bezierCurveTo(437,78,423,61,405,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        ctx.moveTo(405,61);
+        ctx.bezierCurveTo(392,61,382,78,382,99);
+        ctx.bezierCurveTo(382,120,392,137,405,137);
+        ctx.bezierCurveTo(418,137,428,120,428,99);
+        ctx.bezierCurveTo(428,78,418,61,405,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        ctx.moveTo(406,61);
+        ctx.bezierCurveTo(396,61,388,78,388,99);
+        ctx.bezierCurveTo(388,120,396,137,406,137);
+        ctx.bezierCurveTo(416,137,424,120,424,99);
+        ctx.bezierCurveTo(424,78,416,61,406,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        ctx.moveTo(405,61);
+        ctx.bezierCurveTo(399,61,395,78,395,99);
+        ctx.bezierCurveTo(395,120,399,137,405,137);
+        ctx.bezierCurveTo(411,137,415,120,415,99);
+        ctx.bezierCurveTo(415,78,411,61,405,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        ctx.moveTo(405,61);
+        ctx.bezierCurveTo(403,61,401,78,401,99);
+        ctx.bezierCurveTo(401,120,403,137,405,137);
+        ctx.bezierCurveTo(407,137,409,120,409,99);
+        ctx.bezierCurveTo(409,78,407,61,405,61);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+       }
+
+       function LightBulb(xk,yk){
+        ctx.save();
+        ctx.translate(xk,yk);
+
+        ctx.globalAlpha=1.0;
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.moveTo(-18,39);
+        ctx.bezierCurveTo(-18,41,-18,48,-13,53);
+        ctx.bezierCurveTo(-8,58,-3,58,-1,58);
+        ctx.bezierCurveTo(-0,58,6,58,11,54);
+        ctx.bezierCurveTo(17,49,17,43,18,41);
+        ctx.bezierCurveTo(18,34,16,29,15,27);
+        ctx.bezierCurveTo(13,23,10,20,8,18);
+        ctx.bezierCurveTo(8,18,9,18,9,18);
+        ctx.lineTo(10,1);
+        ctx.lineTo(-7,1);
+        ctx.lineTo(-8,18);
+        ctx.lineTo(-7,18);
+        ctx.bezierCurveTo(-9,19,-12,23,-15,27);
+        ctx.bezierCurveTo(-16,30,-18,34,-18,39);
+        ctx.lineTo(-18,39);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='1';
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.moveTo(9,18);
+        ctx.lineTo(-7,13);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='1';
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.moveTo(9,14);
+        ctx.lineTo(-7,9);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='1';
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.moveTo(9,9);
+        ctx.lineTo(-7,4);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle='black';
+        ctx.lineWidth='1';
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.moveTo(9,5);
+        ctx.lineTo(-6,0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        v+=0.01;
+        if(v>1) v=0;
+
+        var ev2=easeInOutQuad(v);
+
+        for(i=0; i<stars.length; i++){
+            drawStar(stars[i].x,stars[i].y,stars[i].pos);
+            stars[i].pos+=(0.005*ev2*direction);
+
+            if(stars[i].pos>0.4){
+              direction=-1;
+            }
+            else if(stars[i].pos<0.2){
+              direction=1;
+            }
+          }
+        ctx.restore();
+     }
+
+     var v=0.01;
+     function easeInOutQuad(x){
+      return x < 0.5 ?
+      2 * x * x :
+      1 - Math.pow( -2 * x + 2, 2 ) / 2;
+     }
+     var direction=1;
+
+     function drawStar(xk, yk, pos, color){
+
+      ctx.save();
+      ctx.translate(xk,yk);
+      ctx.scale(pos, pos);
+
+
+      if(window.logged!==null && window.logged!==""){
+        color='#00bfa5';
+      }else{
+        color='#d50000';
+      }
+
+      ctx.globalAlpha=1.0;
+  // ----====#### START ####====----
+      ctx.fillStyle=color;
+      ctx.beginPath();
+      ctx.moveTo(-3,13);
+      ctx.lineTo(-21,20);
+      ctx.lineTo(-11,4);
+      ctx.lineTo(-24,-10);
+      ctx.lineTo(-5,-7);
+      ctx.lineTo(5,-25);
+      ctx.lineTo(7,-5);
+      ctx.lineTo(26,-1);
+      ctx.lineTo(9,8);
+      ctx.lineTo(10,27);
+      ctx.lineTo(-3,13);
+      ctx.fill();
+      ctx.fillStyle=color;
+      ctx.beginPath();
+      ctx.moveTo(5,-23);
+      ctx.lineTo(7,-5);
+      ctx.lineTo(7,-5);
+      ctx.lineTo(8,-4);
+      ctx.lineTo(24,-0);
+      ctx.lineTo(9,7);
+      ctx.lineTo(9,7);
+      ctx.lineTo(9,8);
+      ctx.lineTo(10,25);
+      ctx.lineTo(-2,13);
+      ctx.lineTo(-2,12);
+      ctx.lineTo(-3,13);
+      ctx.lineTo(-20,19);
+      ctx.lineTo(-11,4);
+      ctx.lineTo(-11,4);
+      ctx.lineTo(-11,3);
+      ctx.lineTo(-22,-9);
+      ctx.lineTo(-5,-7);
+      ctx.lineTo(-5,-7);
+      ctx.lineTo(-4,-7);
+      ctx.lineTo(5,-23);
+      ctx.moveTo(5,-26);
+      ctx.lineTo(-5,-8);
+      ctx.lineTo(-25,-11);
+      ctx.lineTo(-12,4);
+      ctx.lineTo(-22,21);
+      ctx.lineTo(-3,14);
+      ctx.lineTo(11,28);
+      ctx.lineTo(10,8);
+      ctx.lineTo(27,-1);
+      ctx.lineTo(8,-5);
+      ctx.lineTo(5,-26);
+      ctx.lineTo(5,-26);
+      ctx.lineTo(5,-26);
+      ctx.fill();
+     // ----====#### END ####====----
+  // ----====#### START ####====----
+      ctx.fillStyle=color;
+      ctx.beginPath();
+      ctx.moveTo(-8,10);
+      ctx.lineTo(-26,6);
+      ctx.lineTo(-10,-3);
+      ctx.lineTo(-12,-23);
+      ctx.lineTo(2,-9);
+      ctx.lineTo(19,-16);
+      ctx.lineTo(11,1);
+      ctx.lineTo(23,15);
+      ctx.lineTo(5,12);
+      ctx.lineTo(-5,29);
+      ctx.lineTo(-8,10);
+      ctx.fill();
+      ctx.fillStyle=color;
+      ctx.beginPath();
+      ctx.moveTo(-11,-22);
+      ctx.lineTo(1,-8);
+      ctx.lineTo(2,-8);
+      ctx.lineTo(2,-8);
+      ctx.lineTo(18,-15);
+      ctx.lineTo(10,0);
+      ctx.lineTo(10,1);
+      ctx.lineTo(11,1);
+      ctx.lineTo(22,14);
+      ctx.lineTo(5,11);
+      ctx.lineTo(4,11);
+      ctx.lineTo(4,12);
+      ctx.lineTo(-5,27);
+      ctx.lineTo(-7,10);
+      ctx.lineTo(-7,9);
+      ctx.lineTo(-8,9);
+      ctx.lineTo(-24,6);
+      ctx.lineTo(-10,-2);
+      ctx.lineTo(-9,-3);
+      ctx.lineTo(-9,-3);
+      ctx.lineTo(-11,-22);
+      ctx.moveTo(-13,-24);
+      ctx.lineTo(-10,-3);
+      ctx.lineTo(-27,6);
+      ctx.lineTo(-8,10);
+      ctx.lineTo(-6,30);
+      ctx.lineTo(5,12);
+      ctx.lineTo(25,16);
+      ctx.lineTo(11,1);
+      ctx.lineTo(20,-17);
+      ctx.lineTo(2,-9);
+      ctx.lineTo(-13,-24);
+      ctx.lineTo(-13,-24);
+      ctx.lineTo(-13,-24);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    stars = [{x:0, y:30.0, pos:0.1}]
+
+
+    function drawgraphics()
+    {
+      ctx.clearRect(0,0,1270,1000);
+
+      ctx.save();
+      ctx.scale(0.8, 0.8);
+      ctx.translate(200,0);
+
+      Flag();
+      Flag(140,0);
+      Flag(300,1);
+      Flag(440,1);
+      Flag(595,1);
+      Flag(730,1);
+
+      if(mx>257&&mx<320&&my>49&&my<110){
+          Ball(-290,0,'#00c853');
+      }else{
+          Ball(-290,0,'#ff6f00');
+      }
+
+      if(mx>492&&mx<557&&my>49&&my<110){
+          Ball(0,0,'#00bfa5');
+      }else{
+          Ball(0,0,'#d50000');
+      }
+
+      if(mx>734&&mx<797&&my>49&&my<110){
+          Ball(300,0,'#00b8d4');
+      }else{
+          Ball(300,0,'#c51162');
+      }
+
+      if(mx>965&&mx<1029&&my>49&&my<110){
+          Ball(590,0,'blue');
+      }else{
+          Ball(590,0,'#4a148c');
+      }
+      LightBulb(255,45);
+      LightBulb(555,45);
+      LightBulb(850,45);
+      Line();
+
+      ctx.restore();
+      window.requestAnimationFrame(drawgraphics);
+
+    }
+
+      function startupCanvas()
+      {
+        var elem = document.getElementById('myCanvas');
+        if (elem && elem.getContext) {
+          ctx = elem.getContext('2d');
+          drawgraphics();
+        }
+      }
+
+      var ctx;
+      var ctx2;
+      var img;
+
+      // Snowflakes
+      var snowflakes = new Array();
+
+      var numflakes=500;
+
+      function Snowflake(xk, yk, spd, siz) {
+        this.xk = xk;
+        this.yk = yk;
+        this.spd = spd;
+        this.siz = siz;
+      }
+
+      function drawgraphics2()
+      {
+        ctx2.clearRect(0,0,1270,2070);
+
+        ctx2.save();
+        ctx2.strokeStyle="#FF0000";
+        ctx2.beginPath();
+
+        ctx2.moveTo(1,80);
+        ctx2.lineTo(1270,80);
+        ctx2.lineTo(635,1000);
+        ctx2.lineTo(1,80);
+        ctx2.clip();
+
+        for(var i=0;i<numflakes;i++){
+          ctx2.save();
+          ctx2.translate(snowflakes[i].xk+(Math.sin(snowflakes[i].xk+(snowflakes[i].yk*0.03))*snowflakes[i].siz*14.0),snowflakes[i].yk);
+          ctx2.scale(snowflakes[i].siz,snowflakes[i].siz);
+          ctx2.drawImage(img,-18,-18);
+          ctx2.restore();
+
+          snowflakes[i].yk+=snowflakes[i].spd;
+          if(snowflakes[i].yk>1200) snowflakes[i].yk-=1200;
+        }
+
+        ctx2.restore();
+
+        setTimeout(function(){drawgraphics2()}, 30);
+      }
+
+      function startupCanvas2()
+      {
+        img=document.getElementById("flake");
+
+        for(var i=0;i<numflakes;i++){
+          var typ=Math.round(Math.random()*4);
+          snowflakes[i]=new Snowflake(Math.round(Math.random()*1200),Math.round(Math.random()*1200),0.5+(typ/2),0.2+(typ/8));
+        }
+
+        var elem = document.getElementById("myCanvas2");
+        if (elem && elem.getContext) {
+          ctx2 = elem.getContext('2d');
+          drawgraphics2();
+        }
+      }
+
+      var mx,my;
+      function mouseMove(e, t){
+
+          var rect = e.target.getBoundingClientRect();
+          mx = e.clientX - rect.left; //x position within the element.
+          my = e.clientY - rect.top;  //y position within the element.
+
+           console.log(mx,my);
+      }
+    function mouseDown(event){
+
+        if(mx>492&&mx<557&&my>49&&my<110){
+          alert("You found a secret item! Use code Webug to get a 10% discout.");
+        }
+
+        if(mx>965&&mx<1029&&my>49&&my<110){
+          alert("You look great today! :)");
+        }
+    }
+
+
+
+    </script>
+
+    </head>
+
+    <body onload="showSlides();startupCanvas();startupCanvas2();checkLocalStorage();setupHistory();">
+
+      <div id="header">
+        <h1>Unique Rooms<p id="underline">-Themed hotel-</p></h1>
+      </div>
+
+      <div id="menu">
+        <object onclick="updateHistory('page2');">Rooms</object>
+        <object onclick="updateHistory('page4')">Make reservation</object>
+        <i onclick="processinputbox()" class="fa fa-shopping-cart" style="font-size:30px"></i>
+        <object onclick="clearLocalStorage();">Log out</object>
+      </div>
+
+  <canvas id="myCanvas" width="1200" height="200" onmousedown="mouseDown();"onmousemove="mouseMove(event, this);" style="width:100%"></canvas>
+
+      <div id="page1" class="page">
+
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="sShow01.jpg" style="width:100%">
+            <div class="text"><a href="https://commons.wikimedia.org/wiki/File:SkyTeam_Lounge_in_Beijing_(25391270559).jpg">Image source</a></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="sShow03.jpg" style="width:100%">
+            <div class="text"><a href="https://pixabay.com/photos/interior-design-modern-style-home-4467771/">Image source</a></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="sShow02.jpg" style="width:100%">
+            <div class="text"><a href="https://www.pexels.com/sv-se/foto/hand-lunch-maltid-mat-33162/">Image source</a></div>
+          </div>
+        </div><br>
+
+        <div style="text-align:center">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+            <div id="allCards">
+        <div id="formContainer">
+
+          <form name="loginForm" id="loginForm" onsubmit="login(); return false" method="post"><h2>Log in</h2>
+            <div class="row">
+              <label>User name:</label>
+              <input type="text" name="id2" id="id2">
+              <div class="error" id="usernameErr"></div><br>
+            </div>
+
+            <div class="row">
+              <label>Password:</label>
+              <input type="text" name="pwd">
+              <div class="error" id="pwdErr"></div><br>
+            </div>
+
+            <div class="row">
+              <input type="submit" value="Log in">
+              <button type="button" onclick="updateHistory('page3');">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer>
+  <p>Picture licenses by:
+    <a href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>
+    <a href="https://pixabay.com/sv/blog/posts/pixabay-license-what-is-allowed-and-what-is-not--4/">Pixabay</a>
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.sv">License CC0</a>
+  </p>
+</footer>
+      </div>
+
+      <div id="page2" class="page">
+
+          <form id="searchForm2">
+            <input type="text" name='resFulltextS' id='resFulltextS'placeholder="Search.."style="width:70%;">
+            <button type="button"onchange="render('none')" onkeyup="render('none')" onclick="searchResources();"><i class="fa fa-search"></i></button><br>
+            <input type="button" onclick="render('up')" value="&#9651;" />
+            <input type="button" onclick="render('down')" value="&#9661;" />
+            <table id="thetab"></table>
+          </form>
+          <div id="OutputDivSearchR"></div>
+
+      <h2>Rooms</h2>
+        <div id="allCards">
+          <section class="container">
+            <div id="card1" class="card" onclick="flip();">
+              <div class="front">
+                <img src="70s01.jpg" style="width:100%">
+                <h3>70s Vibes</h3>
+                <p>This is a small description of the room.</p>
+                <p>Flip card to read more!</p>
+                <p>To book, click the green btn</p>
+              </div>
+              <div class="back">
+                <img src="70s02.jpg" style="width:100%">
+                <p>Text</p>
+                <p>Text</p>
+                <p>Text</p>
+              </div>
+            </div>
+            <span class="fab"onclick="addToCart('card1')"value="room01"> + </span>
+          </section>
+
+          <section class="container">
+            <div id="card2" class="card2" onclick="flip2()">
+              <div class="front">
+                <img src="pool.jpg" style="width:100%">
+                <h3>Cool Pool</h3>
+                <p>This is a small description of the room.</p>
+                <p>Flip card to read more!</p>
+                <p>To book, click the green btn</p>
+              </div>
+              <div class="back">
+                <img src="green01.jpg" style="width:100%">
+                <p>Text</p>
+                <p>Text</p>
+                <p>Text</p>
+              </div>
+            </div>
+            <span class="fab" onclick="addToCart('card2')" value="room02"> + </span>
+          </section>
+
+          <section class="container">
+            <div id="card3" class="card3" onclick="flip3()">
+              <div class="front">
+                <img src="neon02.jpg" style="width:100%">
+                <h3>Nerdy Neon</h3>
+                <p>This is a small description of the room.</p>
+                <p>Flip card to read more!</p>
+                <p>To book, click the green btn</p>
+              </div>
+              <div class="back">
+                <img src="neon01.jpg" style="width:100%">
+                <p>Text</p>
+                <p>Text</p>
+                <p>Text</p>
+              </div>
+            </div>
+            <span class="fab"onclick="addToCart('card3')"value="room03"> + </span>
+          </section>
+        </div>
+        <footer>
+    <p>Picture licenses by:
+      <a href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>
+      <a href="https://pixabay.com/sv/blog/posts/pixabay-license-what-is-allowed-and-what-is-not--4/">Pixabay</a>
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.sv">CC0</a>
+    </p>
+  </footer>
+      </div>
+
+      <div id="page3" class="page">
+        <canvas id="myCanvas2" width="1270" height="1000"style="width:100%;"></canvas>
+        <img style="border:1px solid red; display:none;" id="flake" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxhZ2VyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxMzY2IDc2OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTM2NiA3Njg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDp1cmwoI1NWR0lEXzFfKTtzdHJva2U6I0IzQjNCMztzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxyYWRpYWxHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGN4PSI0NiIgY3k9IjQ3IiByPSI0Mi41IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+Cgk8c3RvcCAgb2Zmc2V0PSIwLjE1NjUiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkZGRkYiLz4KCTxzdG9wICBvZmZzZXQ9IjAuODI5NCIgc3R5bGU9InN0b3AtY29sb3I6IzAwQkZBNSIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8Y2lyY2xlIGNsYXNzPSJzdDAiIGN4PSI0NiIgY3k9IjQ3IiByPSI0Mi41Ii8+Cjwvc3ZnPgo=
+"/>
+
+        <div id="formContainer">
+          <form name="contactForm" id="regForm" onsubmit="validateForm(); return false" method="post">
+            <h2>Register</h2>
+            <div class="row">
+              <label>Id:</label>
+              <input type="text" name="id" id="id"placeholder="ex, 123456">
+              <div class="error" id="idErr"></div><br>
+            </div>
+            <div class="row">
+              <label>First Name:</label>
+              <input type="text" name="firstName" id="firstName">
+              <div class="error" id="firstNameErr"></div><br>
+            </div>
+            <div class="row">
+              <label>Last Name:</label>
+              <input type="text" name="lastName" id="lastName">
+              <div class="error" id="lastNameErr"></div><br>
+            </div>
+            <div class="row">
+              <label>Email Address:</label>
+              <input type="text" name="email" id="email">
+              <div class="error" id="emailErr"></div><br>
+            </div>
+            <div class="row">
+              <label>Address:</label>
+              <input type="text" name="address"id="address">
+              <div class="error" id="addressErr"></div><br>
+            </div>
+            <div class="row">
+              <label>Password:</label>
+              <input type="text" name="password"id="password">
+              <div class="error" id="passwordErr"></div><br>
+            </div>
+            <div class="row">
+              <input type="submit" value="Submit">
+              <input type="button" onclick="updateHistory('page1');" value="Go back"/>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="page4" class="page">
+        <div id="allCards">
+          <div id="formContainer">
+            <form name="resForm" id="resForm" onsubmit="validateBooking(); return false" method="post">
+              <h2>Make A Reservation</h2>
+              <div class="row">
+                <label>Room:</label>
+                <input type="text" name="room" id="room" value readonly>
+                <div class="error" id="roomErr"></div><br>
+              </div>
+              <div class="row">
+                <label>Check in date:</label>
+                <input type="text" name="checkin" id="checkin">
+                <div class="error" id="checkinErr"></div><br>
+              </div>
+              <div class="row">
+                <label>Check out date:</label>
+                <input type="text" name="ckeckout" id="checkout">
+                <div class="error" id="checkoutErr"></div><br>
+              </div>
+              <div class="row">
+                <label>Number of people:</label>
+                <input type="text" name="status" id="status" value="2" readonly>
+              </div>
+              <div class="row">
+                <label>Position:</label>
+                <input type="text" name="positionB" id="positionB" value="0" readonly>
+              </div>
+              <div class="row">
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+
+            <div id="showHidden3">
+              <div class="fab"id="fab4"> > </div>
+            </div>
+            <div class="hiddenItem3" style="display: none;">
+              <div id="formContainer">
+                <form id="searchForm"style="width: 500px;">
+                  <h2>Availability</h2>
+                  <div class="row">
+                    <label>Room Name:</label>
+                    <input type='text' name='resNameA' id='resNameA'/>
+                    <input type="button" onclick="searchAvailability();" value="Search Availability"/>
+                    <div id="OutputDivSearchA"></div>
+                  </div><br>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page5" class="page">
+        <h2>My Bookings</h2>
+        <div id="showHidden">
+          <div class="fab"id="fab2"> + </div>
+        </div>
+        <div class="hiddenItem" style="display: none;background:white;">
+          <div id="formContainer">
+            <div class="row">
+              <div id="OutputDiv"></div>
+            </div>
+          </div>
+        </div>
+
+        <h2>Delete Booking</h2>
+        <div id="showHidden2"style="">
+          <div class="fab"id="fab3"> + </div>
+        </div>
+        <div class="hiddenItem2" style="display: none;background:white;">
+          <div id="formContainer">
+            <div class="row">
+              <label>Room:</label>
+    			    <input type='text' name='resourceIDD' id='resourceIDD'>
+              <label>Date:</label>
+    			    <input type='text' name='dateD' id='dateD'>
+              <input type="button" onclick="deleteBooking();" value="Delete booking"/><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page6" class="page">
+
+
+
+      </div>
+
+    </body>
+</html>

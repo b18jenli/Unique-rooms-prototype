@@ -1,0 +1,366 @@
+
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade|League+Script&display=swap');
+
+#myCanvas2{
+  position: absolute;
+}
+p{
+  font-size: 14px;
+}
+footer{
+  position: absolute;
+  bottom:0%;
+  width: 100%;
+  text-align: center;
+}
+a{
+  text-decoration: none;
+  color: #717171;
+  font-size: 12px;
+  transition: all 200ms ease-in;
+  padding: 5px;
+}
+a:hover{
+  padding: 5px;
+  color: black;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: white;
+}
+h1{
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Bungee Shade';
+}
+h1 p{
+  font-size: 20px;
+  font-family: 'League Script';
+}
+#menu{
+  align-items: center;
+  text-align: center;
+  display: block;
+}
+object{
+  font-family: sans-serif;
+  color: black;
+  font-size: 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+h2{
+  text-align: center;
+  margin-top: 100px;
+  font-family: 'League Script';
+  font-size: 30px;
+}
+.page{
+  position:absolute;
+  left:0px;
+  top:50%;
+  right:0px;
+  height: 150%;
+}
+#page1{
+  display:block;
+  background:white;
+  position: absolute;
+  height: 150%;
+}
+#loginForm{
+  height:60%;
+  margin-top: 50px;
+}
+.mySlides {
+  display: none;
+
+}
+img {
+  vertical-align: middle;
+  background-color: lightgrey;
+  width: 960px;
+  height: 250px;
+}
+.slideshow-container {
+  max-width: 960px;
+  max-height: 250px;
+  top: 50px;
+  position: relative;
+  margin: auto;
+}
+.text {
+  color: #717171;
+  font-size: 9px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(255, 255, 255, 0.8);
+  width: 10%;
+}
+.numbertext {
+  color: #717171;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  background-color: rgb(255, 255, 255, 0.6);
+}
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  margin-top:50px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active {
+  background-color: #717171;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+#page2{
+  display: none;
+  background: white;
+  text-align: center;
+  height: 150%;
+  top: 55%;
+}
+#allCards{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.fab {
+   width: 50px;
+   height: 50px;
+   background-color: #00bfa5;
+   border-radius: 50%;
+   box-shadow: 0 6px 10px 0 #666;
+   transition: all 0.1s ease-in-out;
+   font-size: 25px;
+   color: white;
+   text-align: center;
+   line-height: 50px;
+   position: fixed;
+   right: 40%;
+   bottom: 8%;
+}
+.fab:hover, .fab2:hover {
+   box-shadow: 0 6px 14px 0 #666;
+   transform: scale(1.05);
+}
+.fab:active{
+  background-color: black;
+}
+.container{
+    width: 300px;
+    height: 560px;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    margin: 20px;
+}
+.card, .card2, .card3 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+.card div, .card2 div, .card3 div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+.card div h3, .card2 div h3, .card3 div h3{
+  font-size: 30px;
+  font-family: 'Bungee Shade';
+}
+.card div p, .card2 div p, .card3 div p{
+  font-size: 14px;
+  font-family: sans-serif;
+}
+.card .front, .card2 .front, .card3 .front {
+  background: red;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.card .back, .card2 .back, .card3 .back {
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.card.flipped, .card2.flipped, .card3.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+#page3{
+  display:none;
+  background: white;
+  height: 100%;
+}
+#regForm{
+  position: absolute;
+  height:90%;
+  margin-top: 50px;
+}
+#page4{
+  display:none;
+  background: white;
+  height: 100%;
+}
+#resForm{
+  height:90%;
+  margin-right: 20px;
+  padding-right: 80px;
+  margin-top: 100px;
+}
+#fab4{
+  position: static;
+  top: 38.5%;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  float: right;
+  margin-right: 20px;
+}
+#showHidden3{
+  margin-top: 100px;
+}
+#searchForm{
+  margin-top: 100px;
+  height: 70%;
+}
+#searchForm2{
+  position: absolute;
+  width: 20%;
+  right: 15%;
+}
+#searchForm label{
+  float: left;
+}
+#page5{
+  display:none;
+  background-color: white;
+  height: 150%;
+}
+#fab2{
+  position: relative;
+  left: 58%;
+  /*top: 80px;*/
+  bottom:85px;
+}
+#fab3{
+  position: relative;
+  bottom: 72px;
+  left: 60%;
+}
+#loginForm, #extraForm, #regForm, #searchForm, #resForm{
+  width:300px;
+  padding:60px;
+  padding-bottom: 50px;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+#formContainer h2, #loginForm h2, #regForm h2{
+  margin-top: -25px;
+}
+#formContainer{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+label{
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.error{
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 10px;
+  color: red;
+}
+input[type=text], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit]:hover{
+  background-color: darkgrey;
+  border-radius: 5px;
+}
+input[type=button]:hover{
+  background-color: darkgrey;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: darkgrey;
+  border-radius: 5px;
+}
+table{
+  padding: 10px;
+}
+td{
+  padding: 5px;
+  text-align: left;
+}
+th{
+  padding: 10px;
+  background-color: #00bfa5;
+}
+#thetab{
+  background-color: white;
+}

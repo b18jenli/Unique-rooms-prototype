@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8"name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="webproject.css">
+
+<script type="text/javascript" src="validering.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+
+    $( document ).ready(function() {
+        showpage('page1');
+    });
+
+          function showpage(pageid)
+          {
+            $(".page").css("display","none");
+            $("#"+pageid).css("display","block");
+            $("#menu").css("display","block");
+              if(pageid=='page1'|| pageid=='page4'){
+
+                  $("#menu").css("display","none");
+              }
+          }
+          $(document).ready(function() {
+    $('#showHidden').click(function() {
+      $('.hiddenItem').slideToggle("slow");
+    });
+  });
+  $(document).ready(function() {
+$('#showHidden2').click(function() {
+$('.hiddenItem2').slideToggle("slow");
+});
+});
+
+$(document).ready(function() {
+$('#showHidden3').click(function() {
+$('.hiddenItem3').slideToggle("slow");
+});
+});
+
+      </script>
+
+    </head>
+
+    <body>
+
+        <div id="header">
+          <h1>Unique Rooms<p id="underline">-Themed hotel-</p></h1>
+        </div>
+
+        <div id="menu">
+          <object onclick="showpage('page2');">Rooms</object>
+          <object onclick="showpage('page6');">My Page</object>
+          <i onclick="showpage('page5');" class="fa fa-shopping-cart" style="font-size:30px"></i>
+        </div>
+
+
+
+      <div id="page1" class="page">
+
+  <!--    <h2>My Bookings</h2>
+        <div id="showHidden">
+          <div class="fab"id="fab2"> + </div>
+        </div>
+        <div class="hiddenItem" style="display: none;background:white;">
+          <div id="formContainer">
+            <div class="row">
+              <label>ID:</label>
+              <input type="text" name="customerID" id="customerID">
+              <input type="button" onclick="processinputbox();" value="See bookings"/><br><br>
+            <div id="OutputDiv"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Delete Booking</h2>
+      <div id="showHidden2">
+        <div class="fab"id="fab3"> + </div>
+      </div>
+      <div class="hiddenItem2" style="display: none;background:white;">
+        <div id="formContainer">
+          <div class="row">
+            <label>ID:</label>
+            <input type="text" name="customerIDD" id="customerIDD">
+            <label>Room:</label>
+            <input type='text' name='resourceIDD' id='resourceIDD'>
+            <label>Date:</label>
+            <input type='text' name='dateD' id='dateD'>
+            <input type="button" onclick="deletebooking();" value="Delete booking"/><br><br>
+          <div id="OutputDiv"></div>
+        </div>
+      </div>
+    </div> -->
+
+      <h2>Make A Reservation</h2>
+      <div id="allCards">
+        <div id="formContainer">
+          <form name="resForm" id="resForm" onsubmit="validateBooking(); return false" method="post">
+
+            <div class="row">
+                <label>Guest Id:</label>
+                <input type="text" name="guestid" id="guestid">
+                <div class="error" id="guestidErr"></div><br>
+            </div>
+
+            <div class="row">
+                <label>Room:</label>
+                <input type="text" name="room" id="room" value readonly>
+                <div class="error" id="roomErr"></div><br>
+            </div>
+
+            <div class="row">
+                <label>Check in date:</label>
+                <input type="text" name="checkin" id="checkin">
+                <div class="error" id="checkinErr"></div><br>
+            </div>
+
+            <div class="row">
+                <label>Check out date:</label>
+                <input type="text" name="ckeckout" id="checkout">
+                <div class="error" id="checkoutErr"></div><br>
+            </div>
+
+            <div class="row">
+                <label>Number of people:</label>
+                <input type="text" name="status" id="status" value="2" readonly>
+            </div>
+
+            <div class="row">
+                <label>Position:</label>
+                <input type="text" name="positionB" id="positionB" value="0" readonly>
+            </div>
+
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+
+            </form>
+
+
+
+              <div id="showHidden3">
+                <div class="fab"id="fab4"> > </div>
+              </div>
+
+              <div class="hiddenItem3" style="display: none;background:white;">
+
+              <form id="searchForm"style="width: 500px;">
+                <div class="row">
+                  <label>Room Name:</label>
+                  <input type='text' name='resNameA' id='resNameA'/>
+                  <input type="button" onclick="searchAvailability();" value="Search Availability"/>
+                </div><br>
+                <label>Search Results:</label>
+                <table>
+                  <tr>
+                    <th>Room ID</th>
+                    <th>Room Name</th>
+                    <th>Quantity</th>
+                    <th>Cost</th>
+                    <th>Check in</th>
+                    <th>Check out</th>
+                    <th>Availability</th>
+                  </tr>
+
+                  <tr>
+                    <td>Room01</td>
+                    <td>70s vibes</td>
+                    <td>1</td>
+                    <td>1000</td>
+                    <td>2020-01-01</td>
+                    <td>2020-01-02</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>Room01</td>
+                    <td>70s vibes</td>
+                    <td>1</td>
+                    <td>1000</td>
+                    <td>2020-01-01</td>
+                    <td>2020-01-02</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>Room01</td>
+                    <td>70s vibes</td>
+                    <td>1</td>
+                    <td>1000</td>
+                    <td>2020-01-01</td>
+                    <td>2020-01-02</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>Room01</td>
+                    <td>70s vibes</td>
+                    <td>1</td>
+                    <td>1000</td>
+                    <td>2020-01-01</td>
+                    <td>2020-01-02</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>Room01</td>
+                    <td>70s vibes</td>
+                    <td>1</td>
+                    <td>1000</td>
+                    <td>2020-01-01</td>
+                    <td>2020-01-02</td>
+                    <td>0</td>
+                  </tr>
+
+                    </table>
+              </form>
+            </div>
+
+      </div>
+    </div>
+  </div>
+
+      <div id="page2" class="page"style="background:lightblue;">
+        <h2>Page 2</h2>
+
+      </div>
+
+      <div id="page3" class="page" style="background:lightgreen;">
+        <h2>Page 3</h2>
+      </div>
+
+      <div id="page6" class="page">
+        <h2>Page 6</h2>
+      </div>
+    </body>
+    </html>
